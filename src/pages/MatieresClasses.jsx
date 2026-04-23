@@ -239,7 +239,7 @@ useEffect(() => {
                 setItems(res.data[cfg.responseKey] || []);
             }
         } catch (err) {
-            console.error(err);
+            console.log('erreur serveur')
             showToast("Erreur lors du chargement des données.", "error");
         } finally {
             setLoading(false);
@@ -270,7 +270,7 @@ useEffect(() => {
         showToast(`${cfg.label} « ${trimmed} » ajoutée avec succès !`, "success");
       }
     } catch (err) {
-      console.error(err);
+      console.log('erreur serveur')
       showToast("Erreur lors de l'ajout.", "error");
     }
   };
@@ -285,7 +285,7 @@ useEffect(() => {
         showToast(`${cfg.label} modifiée en « ${updated.nom} » avec succès !`, "success");
       }
     } catch (err) {
-      console.error(err);
+      console.log('erreur serveur')
       showToast("Erreur lors de la modification.", "error");
     }
   };
@@ -299,7 +299,7 @@ useEffect(() => {
       setDeleteTarget(null);
       showToast(`${cfg.label} « ${nom} » supprimée.`, "warning");
     } catch (err) {
-      console.error(err);
+      console.log('erreur serveur')
       showToast("Erreur lors de la suppression.", "error");
       setDeleteTarget(null);
     }

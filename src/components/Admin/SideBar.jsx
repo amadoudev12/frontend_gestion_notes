@@ -50,7 +50,6 @@ function Sidebar({ open, setOpen }) {
             setUser(decoded)
         }
     },[])
-    console.log('user',user)
     return (
         <>
             {/* Overlay mobile */}
@@ -133,7 +132,7 @@ function Sidebar({ open, setOpen }) {
                 {/* Profile + Logout */}
                 <div className="px-3 pb-5 pt-2 border-t border-white/10 space-y-2">
                     <div className="flex items-center gap-3 px-3 py-2">
-                        <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                        <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white text-sm font-bold shrink-0">
                             A
                         </div>
                         <div className="min-w-0">

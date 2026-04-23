@@ -33,9 +33,8 @@ function Sidebar({ open, setOpen }) {
                 try{
                     const user = jwtDecode(token)
                     setProfile(user.profil)
-                    //console.log(user.profil)
                 }catch(err){
-                    console.log('erreur',err)
+                    console.log('erreur serveur')
                 }
             }
     }, [])

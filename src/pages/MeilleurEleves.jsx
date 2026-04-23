@@ -98,7 +98,7 @@ export default function TopElevesDashboard() {
                     setData(res.data.resultat)
                 }
             }catch(err){
-                console.log('erreur lors de la recuperation')
+                console.log('erreur serveur')
             }
         } 
         getData()

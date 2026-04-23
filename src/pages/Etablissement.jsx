@@ -10,7 +10,6 @@ export default function EtablissementPage() {
         const decoded = jwtDecode(token)
         setId(decoded.profil.id)
     },[])
-    console.log(id)
     const [etablissement, setEtablissement] = useState(null)
     useEffect(()=>{
         if(!id) return
@@ -21,7 +20,7 @@ export default function EtablissementPage() {
                     setEtablissement(res.data.etablissement)
                 }
             }catch(err){
-                console.log(err)
+                console.log('erreur serveur')
             }
         }
         getEtablissement()
@@ -53,7 +52,6 @@ export default function EtablissementPage() {
     const [saved, setSaved] = useState(false)
     const handleSave = async () => {
         if(!form){
-            console.log('entrez donnée')
             return
         }
         try {
@@ -61,7 +59,7 @@ export default function EtablissementPage() {
             await etablissementService.postEtablissement(form)
             setSaved(true)
         }catch(err){
-            console.log(err)
+            console.log('erreur serveur')
         }
     };
 

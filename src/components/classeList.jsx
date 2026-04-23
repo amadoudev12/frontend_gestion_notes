@@ -5,7 +5,6 @@ function StatCard({ items}) {
     const location = useLocation()
     const path = location.pathname
     const last = path.split('/').filter(Boolean).pop()
-    console.log(last)
     const isNotes = last == "notes" || "eleves"
     const selectMatiere = ()=> {
             localStorage.setItem('matiere',items.matiere)
@@ -34,12 +33,11 @@ export default function ClasseList() {
                     setClasse(res.data.classeEnseigner)
                 }
             }catch(err){
-                console.log(err)
+                console.log('erreur serveur')
             }
         }
         getClasses()
     },[])
-    //console.log(classes)
 return (
     <>
         {

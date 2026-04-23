@@ -29,7 +29,7 @@ export default function StudentTable() {
                 const res = await classeService.getListApi(id);
                 if (res.data) setEleves(res.data.listeEleves);
             } catch (err) {
-                console.log("erreur lors de la recuperation", err);
+
             }
         };
         getListe();
@@ -86,16 +86,14 @@ export default function StudentTable() {
             // envoi des données au backend 
             const res = await noteService.postNote(payload)
             if(res.data){
-                console.log(res.data.message)
                 localStorage.removeItem('matiere')
             }
             // await noteService.saveNotes(id, payload);
-            console.log("Données à enregistrer :", payload)
             setSubmitted(true);
             setTimeout(() => setStep(null), 1800);
             localStorage.removeItem("matiere")
         } catch (err) {
-            console.log("Erreur lors de l'enregistrement", err);
+            console.error("Erreur lors de l'enregistrement:", err?.message || "Erreur inconnue");
         }
     };
 

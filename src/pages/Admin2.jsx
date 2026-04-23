@@ -448,7 +448,6 @@ export default function App() {
                 adminService.fortesMoyenne(),
                 adminService.faiblesMoyenne()
             ]);
-            console.log(elevesForts.data)
             setChartData({
             courbeData:     moyenneEvolution?.data,
             moyenneClasses: moyenneClasses?.data,
@@ -458,8 +457,7 @@ export default function App() {
             elevesFaibles:  elevesFaibles?.data // idem
             });
         } catch (err) {
-            console.error("Dashboard fetch error:", err);
-            // Fallback sur les mock data si l'API est indisponible
+            console.log('erreur serveur')
             setStat(MOCK.stat);
             setChartData(MOCK);
         } finally {

@@ -9,7 +9,6 @@ export default function login() {
         const token = localStorage.getItem('token')
         if(token){
             const decodedToken = jwtDecode(token)
-            console.log('token home:' ,decodedToken)
             if(decodedToken.user.role === "ENSEIGNANT"){
                 navigate('/dashboard/enseignant')
             }else if (decodedToken.user.role === "ELEVE"){

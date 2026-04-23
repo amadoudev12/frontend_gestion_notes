@@ -28,7 +28,6 @@ const getMeilleureMatiere = (matieres) => {
     return matieres.reduce((best, m) => (Number(m.moyenne) > Number(best.moyenne) ? m : best), matieres[0]);
 } 
 function StatsCards({matiereMoyenne, eleve}) {
-    console.log('elerves setCards: ', eleve);
     
         const [rang, setRang]= useState(null)
         useEffect (()=>{
@@ -36,11 +35,10 @@ function StatsCards({matiereMoyenne, eleve}) {
                 try{
                     const res = await eleveService.getRang()
                     if(res.data){
-                        console.log('rang')
                         setRang(res.data.rang)
                     }
                 }catch(err){
-                    console.log(err)
+                    console.log('erreur serveur')
                 }
             }
             getRangFunction()

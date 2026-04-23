@@ -69,9 +69,8 @@ function DashboardContent({user}) {
         if(res.data){
           setStatistique(res.data)
         }
-        console.log(statistique)
       }catch(err){
-        console.log(err)
+        console.log('erreur serveur')
       }
     }
     getStatistique()
@@ -152,9 +151,8 @@ export default function TeacherDashboard() {
             try{
                 const user = jwtDecode(token)
                 setProfile(user.profil)
-                console.log(user.profil)
             }catch(err){
-                console.log('erreur',err)
+              console.log('erreur serveur')
             }
         }
     }, [])

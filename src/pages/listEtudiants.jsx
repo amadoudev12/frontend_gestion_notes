@@ -206,7 +206,7 @@ export default function StudentTable() {
                 const res = await classeService.getListApi(id);
                 if (res.data) setEleves(res.data.listeEleves);
             } catch (err) {
-                console.log("erreur lors de la recuperation", err);
+                console.log('erreur serveur')
             }
         };
         getListe();
@@ -281,21 +281,17 @@ export default function StudentTable() {
         }
         try {
             if (mode === "note") {
-                console.log(config)
                 const notesArray = eleves.map((e) => ({ matricule: e.matricule, note: Number(notes[e.matricule]) }));
                 const res = await noteService.postNote({ config, notes: notesArray });
                 if (res.data) localStorage.removeItem("matiere");
             } else {
-                console.log(absences)
-                console.log(config)
                 const absArray = eleves.map((e) => ({ matricule: e.matricule, nombre: Number(absences[e.matricule].nombre), justifiee: absences[e.matricule].justifiee }));
-                console.log(absArray)
                 await eleveService.postAbsence({ config, absences: absArray }); // adapter selon votre service
             }
             setSubmitted(true);
             setTimeout(() => closeModal(), 2000);
         } catch (err) {
-            console.log("Erreur lors de l'enregistrement", err);
+            console.log('erreur serveur')
         }
     };
 

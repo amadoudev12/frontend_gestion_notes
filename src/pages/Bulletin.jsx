@@ -19,7 +19,7 @@ useEffect(() => {
             const res = await classeService.getAllClasse()
             setClasses(res.data.classes ?? [])
         } catch (err) {
-            console.error("Erreur chargement classes", err)
+            console.log('erreur serveur')
         } finally {
             setLoading(false)
         }
@@ -41,14 +41,11 @@ const toggleFichePanel = async (classe) => {
             setMatieres(prev => ({ ...prev, [classe.id]: res.data.matieres ?? [] }))
             
         } catch (err) {
-            console.error("Erreur chargement matières", err)
             setMatieres(prev => ({ ...prev, [classe.id]: [] }))
         } finally {
             setLoadingMatieres(prev => ({ ...prev, [classe.id]: false }))
         }
     }
-    console.log(matieres)
-}
 
   /* ── Télécharger bulletins ── */
 const downloadBulletin = async (classe) => {
@@ -57,7 +54,7 @@ const downloadBulletin = async (classe) => {
             const res = await bulletinService.getBulletinsByClasse(classe.id)
             triggerDownload(res.data, `bulletins_${classe.libelle}.pdf`)
         } catch (err) {
-            console.error("Erreur téléchargement bulletin", err)
+            console.log('erreur serveur')
         } finally {
             setDownloading(null)
         }
@@ -66,12 +63,11 @@ const downloadBulletin = async (classe) => {
   /* ── Télécharger fiche de notes d'une matière ── */
 const downloadFicheNote = async (classe, matiere) => {
         setDownloading({ id: classe.id, type: "fiche", matiereId: matiere.id })
-        console.log(matiere)
         try {
             const res = await noteService.getListeNotes({id_classe:classe.id, id_matiere:matiere.id})
             triggerDownload(res.data, `fiche_notes_${classe.libelle}_${matiere.libelle}.pdf`)
         } catch (err) {
-            console.error("Erreur téléchargement fiche de notes", err)
+            console.log('erreur serveur')
         } finally {
             setDownloading(null)
         }
@@ -315,6 +311,7 @@ const isLoadingBtn = (classeId, type, matiereId) =>
         </div>
     </div>
   )
+}
 }
 
 export default BulletinAdmin

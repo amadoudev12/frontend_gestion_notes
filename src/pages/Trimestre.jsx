@@ -14,7 +14,7 @@ function TrimestresPage() {
                     setTrimestres(res.data)
                 }
             }catch(err){
-                console.log(err)
+                console.log('erreur serveur')
             }
         }
         getTrimestre()
@@ -27,14 +27,14 @@ function TrimestresPage() {
             await trimestreService.postTrimestre(form)
             setSuccess(true)
         }catch(err){
-            console.log(err)
+            console.log('erreur serveur')
         }
     }
     const toggleActif = async (id) => {
         try {
             await trimestreService.activeTrimestre(id)
         }catch(err){
-            console.log(err)
+            console.log('erreur serveur')
         }
     };
 

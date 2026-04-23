@@ -86,7 +86,6 @@ function NotesRecentes() {
             const token_decoded = jwtDecode(token)
             const getNotes = async () => {
                 const matricule = token_decoded.profil.matricule
-                console.log(matricule)
                 try {
                     const res = await noteService.getNoteByMatricule(matricule)
                     if(res.data){
@@ -94,12 +93,11 @@ function NotesRecentes() {
                         setMessage(res.data.message)
                     }
                 }catch(err){
-                    console.log(err)
+                    console.log('erreur serveur')
                 }
             }
             getNotes()
         },[])
-        console.log(notesRecentes)
     return (
         <div className="rounded-2xl p-6" style={{ background: "linear-gradient(135deg, #1e1b4b, #0f172a)", border: "1px solid rgba(99,102,241,0.2)" }}>
         <div className="flex items-center justify-between mb-5">
@@ -172,7 +170,6 @@ function NotesRecentes() {
                     setEleve(res.data.eleveInformation)
                 }
             }catch(err){
-                console.log(err)
                 return err
             }
         }
@@ -187,7 +184,6 @@ function NotesRecentes() {
             }
             getMoyenneMat()
         },[])
-    console.log(eleve)
     if (loggedOut) {
         return (
         <div className="min-h-screen flex items-center justify-center"

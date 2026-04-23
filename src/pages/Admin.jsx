@@ -83,12 +83,11 @@ import noteService from "../../services/noteService";
                     setStat(res.data)
                 }
             }catch(err){
-                console.log(err)
+                console.log('erreur serveur')
             }
         }
         Total()
-    },[])
-    console.log(stat)
+    },[])  
     return (
         <div>
         <SectionTitle icon={LayoutDashboard} title="Tableau de bord" subtitle="Vue d'ensemble de l'établissement" />
@@ -168,7 +167,7 @@ export default function App() {
 
                 setData(resultat)
             }catch(err){
-                console.log(err)
+                console.log('erreur serveur')
             }
         }
 

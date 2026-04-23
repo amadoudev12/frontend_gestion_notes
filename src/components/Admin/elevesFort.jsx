@@ -11,7 +11,7 @@ useEffect(()=>{
                 setElevesFort(res.data.moyennesEleves)
             }
         }catch(err){
-            console.log(err)
+            console.log('erreur serveur')
         }
     }
     getElevesFort()

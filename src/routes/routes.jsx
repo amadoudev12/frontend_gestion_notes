@@ -2,7 +2,7 @@ import React from 'react'
 import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import PrivateRoute from './Private.Route.jsx'
-
+import PageLoader from '../components/LoaderPage.jsx'
 
 const LoginPage = lazy(()=> import('../pages/login.jsx'))
 const DashboardEnseignant = lazy(()=> import('../pages/enseignant-dashboard.jsx'))
@@ -23,7 +23,7 @@ const Affectation = lazy(()=> import('../pages/Affectations.jsx'))
 const Import = lazy(()=> import ('../pages/Import.jsx'))
 export default function Approutes() {
 return (
-    <Suspense fallback={<div>Chargement...</div>}>
+    <Suspense fallback={<PageLoader message={"chargement"}/>}>
         <Routes>
             <Route path='/login' element={<LoginPage/>} />
             <Route path='/' element={<Home/>}/>

@@ -8,7 +8,6 @@ function HeaderEleve({ eleve, onLogout }) {
 
     const telechargerbulletin = async () => {
         try {
-            console.log('matricule envoyé', eleve.matricule)
             const matricule = eleve.matricule
             const res = await eleveService.getEleveBulletin({ matricule: matricule })
             const blod = new Blob([res.data], { type: 'application/pdf' })
@@ -27,7 +26,7 @@ function HeaderEleve({ eleve, onLogout }) {
             document.body.removeChild(link)
             window.URL.revokeObjectURL(url)
         } catch (err) {
-            console.log("erreur telechargement")
+            console.log('erreur serveur')
         }
     }
 

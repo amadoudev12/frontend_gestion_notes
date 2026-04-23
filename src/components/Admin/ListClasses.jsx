@@ -57,7 +57,7 @@ export default function ListClasse() {
                 setClasses(res.data.classes)
             }
         } catch (err) {
-            console.log(err)
+            console.log("Error occurred")
         } finally {
             setLoading(false)
             setTimeout(() => setVisible(true), 50)
