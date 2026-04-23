@@ -31,7 +31,7 @@ function HeaderEleve({ eleve, onLogout }) {
         }
     }
 
-    const initiales = `${eleve?.prenom?.[0] ?? ''}${eleve?.nom?.[0] ?? ''}`.toUpperCase()
+    const initiales = `${eleve?.eleve.prenom?.[0] ?? ''}${eleve?.eleve.nom?.[0] ?? ''}`.toUpperCase()
 
     return (
         <header className="mb-6 rounded-2xl overflow-hidden"
@@ -56,7 +56,7 @@ function HeaderEleve({ eleve, onLogout }) {
                             Tableau de bord élève
                         </p>
                         <h1 className="text-xl font-medium" style={{ color: "var(--color-text-primary)" }}>
-                            {eleve?.prenom} <span style={{ color: "#7f77dd" }}>{eleve?.nom}</span>
+                            {eleve?.eleve?.prenom} <span style={{ color: "#7f77dd" }}>{eleve?.eleve?.nom}</span>
                         </h1>
                         <div className="flex items-center gap-2 mt-1">
                             <span className="flex items-center gap-1 text-xs" style={{ color: "var(--color-text-secondary)" }}>

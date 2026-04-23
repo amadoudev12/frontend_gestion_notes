@@ -1,15 +1,19 @@
 import { jwtDecode } from "jwt-decode";
 import {
-    LayoutDashboard,
-    Calendar,
-    UserX,
-    FileText,
-    Building2,
-    LogOut,
-    GraduationCap,
-    X,
-    ChevronRight,
-    Trophy
+  LayoutDashboard,
+  Calendar,
+  UserX,
+  FileText,
+  Building2,
+  GraduationCap,
+  Trophy,
+  Users,
+  BookOpen,
+  School,
+  Upload,
+  X,
+  LogOut,
+  ChevronRight
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -22,7 +26,11 @@ const NAV = [
     { icon: UserX,           label: "Absences",          path: "/dashboard/admin/absences" },
     { icon: FileText,        label: "Bulletins et Notes",         path: "/dashboard/bulletins" },
     { icon: Building2,       label: "Établissement",     path: "/dashboard/admin/etablissement" },
-    { icon: Trophy, label: "Top", path: "/dashboard/admin/topClasse" }
+    { icon: Trophy, label: "Top", path: "/dashboard/admin/topClasse" },
+    { icon: Users, label: "Affectation", path: "/dashboard/admin/affectation" },
+    { icon: BookOpen, label: "Matières", path: "/dashboard/admin/matieres" },
+    { icon: School, label: "Classes", path: "/dashboard/admin/classes" },
+    { icon: Upload, label: "Importer", path: "/dashboard/admin/import" },
     // { icon: School2,       label: "Classes",     path: "/dashboard/admin/classes" },
 ];
 

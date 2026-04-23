@@ -54,7 +54,7 @@ export default function ListClasse() {
         try {
             const res = await classeService.getAllClasse()
             if (res.data) {
-            setClasses(res.data.classes)
+                setClasses(res.data.classes)
             }
         } catch (err) {
             console.log(err)

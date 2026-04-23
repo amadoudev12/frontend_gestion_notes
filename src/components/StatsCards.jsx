@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 import StatCard from "./StatCard";
 import eleveService from "../../services/eleveService";
 const getMoyenneGenerale = (matieres) => {
-    const totalPoints = matieres.reduce((acc, m) => acc + m.moyenne * m.coefficient, 0);
+    if(!matieres.length){
+        return 0
+    }
+    const totalPoints = matieres.reduce(
+        (acc, m) => acc + Number(m.moyenne) * Number(m.coefficient), 
+        0
+    )
     const totalCoef = matieres.reduce((acc, m) => acc + m.coefficient, 0);
     return (totalPoints / totalCoef).toFixed(2);
 }
@@ -26,12 +32,9 @@ function StatsCards({matiereMoyenne, eleve}) {
     
         const [rang, setRang]= useState(null)
         useEffect (()=>{
-            if (!eleve?.matricule || !eleve?.idClasse) return;
             const getRangFunction = async () => {
-                const matricule = eleve?.matricule
-                const idClasse = eleve?.idClasse
                 try{
-                    const res = await eleveService.getRang({idClasse, matricule})
+                    const res = await eleveService.getRang()
                     if(res.data){
                         console.log('rang')
                         setRang(res.data.rang)
@@ -51,8 +54,8 @@ function StatsCards({matiereMoyenne, eleve}) {
             <StatCard  label="Moyenne générale" value={`${moy}/20`} sub={mention.label} subColor={mention.color} accent="#6366f1" />
             <StatCard  label="Matières" value={matiereMoyenne.length} sub="au programme" subColor="text-slate-400" accent="#a78bfa" />
             {/* <StatCard icon="✏️" label="Évaluations" value={totalEvals} sub="ce trimestre" subColor="text-slate-400" accent="#38bdf8" /> */}
-            <StatCard  label="Meilleure matière" value={`${meilleure?.moyenne}/20`} sub={meilleure?.nom} subColor="text-emerald-400" accent="#34d399" />
-            <StatCard  label="Rang" value={rang != null ? `${rang}` : "N/A"} sub={meilleure?.nom} subColor="text-emerald-400" accent="#34d399" />
+            <StatCard  label="Meilleure matière" value={`${Number(meilleure?.moyenne ?? 0)}/20`} sub={meilleure?.nom} subColor="text-emerald-400" accent="#34d399" />
+            <StatCard  label="Rang" value={rang != null ? `${rang}` : "Non classe"} sub={meilleure?.nom} subColor="text-emerald-400" accent="#34d399" />
             </div>
         );
 }

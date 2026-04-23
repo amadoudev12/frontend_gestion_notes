@@ -4,6 +4,7 @@ const noteService = {
     postNote : (data) => axiosClient.post('note/create-note',data),
     getListeNotes : (data)=> axiosClient.post('/note/liste-note',data,{
         responseType:"blob"
-    })
+    }),
+    noteRepartition : ()=> axiosClient.get('/note/repartition-note')
 }
 export default noteService

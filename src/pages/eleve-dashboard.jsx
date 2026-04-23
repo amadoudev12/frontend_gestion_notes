@@ -169,7 +169,7 @@ function NotesRecentes() {
             try{
                 const res = await eleveService.getEleve(matricule)
                 if(res.data){
-                    setEleve(res.data.eleve)
+                    setEleve(res.data.eleveInformation)
                 }
             }catch(err){
                 console.log(err)
@@ -194,7 +194,7 @@ function NotesRecentes() {
             style={{ background: "linear-gradient(135deg, #0a0a1a, #0f172a, #1e1b4b)" }}>
             <div className="text-center p-10 rounded-3xl" style={{ background: "rgba(30,27,75,0.8)", border: "1px solid rgba(99,102,241,0.3)" }}>
             <div className="text-5xl mb-4">👋</div>
-            <h2 className="text-white text-2xl font-bold mb-2">À bientôt, {eleve.prenom} !</h2>
+            <h2 className="text-white text-2xl font-bold mb-2">À bientôt, {eleve.eleve.prenom} !</h2>
             <p className="text-slate-400 mb-6">Vous avez été déconnecté avec succès.</p>
             <button onClick={() => setLoggedOut(false)}
                 className="px-6 py-3 rounded-xl font-semibold text-white transition-all hover:scale-105"
@@ -218,7 +218,7 @@ function NotesRecentes() {
                     <NotesRecentes />
                 </div>
                 <p className="text-center text-slate-600 text-xs mt-8">
-                    Dashboard Élève © 2025 — {eleve?.prenom} {eleve?.nom} · {eleve?.classe?.libelle}
+                    Dashboard Élève © 2025 — {eleve?.eleve.prenom} {eleve?.nom} · {eleve?.classe?.libelle}
                 </p>
             </div>
         </div>

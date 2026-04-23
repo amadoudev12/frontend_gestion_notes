@@ -9,6 +9,9 @@
 import adminService from "../../services/adminService";
 import ElevesForts from "../components/Admin/elevesFort";
 import ElevesFaibles from "../components/Admin/elevesFaibles";
+import MoyenneEvolutionChart from "../components/Admin/MoyenneEvolutionChart";
+import etablissementService from "../../services/etablissementService";
+import noteService from "../../services/noteService";
     // ─── HELPER ──────────────────────────────────────────────────────────────────
     export const cls = (...args) => args.filter(Boolean).join(" ");
     // ─── STAT CARD ───────────────────────────────────────────────────────────────
@@ -95,7 +98,7 @@ import ElevesFaibles from "../components/Admin/elevesFaibles";
             <StatCard title="Total élèves" value={stat?.nombreEleves ?? ""} subtitle="Inscrits cette année" icon={Users} color="blue" delay={0} />
             <StatCard title="Classe" value={stat?.nombreClasses ?? ""}icon={TrendingUp} color="emerald" delay={100} />
             <StatCard title="Enseignants" value={stat?.nombreEnseignants ?? ""}  icon={Award} color="amber" delay={200} />
-            <StatCard title="Moyenne" value={stat?.moyenneEtablissement ?? ""}  icon={Award} color={stat?.moyenneEtablissement > 10 ? "succes":"danger"} delay={200} />
+            <StatCard title="Moyenne" value={stat?.moyenneEtablissement.moyenneEtablissement ?? ""} subtitle={stat?.moyenneEtablissement.trimestre}  icon={Award} color={stat?.moyenneEtablissement > 10 ? "succes":"danger"} delay={200} />
             {/* <StatCard title="Total absences" value={`${totalAbsences}h`} subtitle="Heures cumulées" icon={AlertCircle} color="rose" delay={300} /> */}
         </div>
         </div>
@@ -137,7 +140,40 @@ import ElevesFaibles from "../components/Admin/elevesFaibles";
 
     //APP
 
-    export default function App() {
+export default function App() {
+    const [data, setData] = useState([])
+    // const data = [
+    //     { trimestre: "T1", moyenne: 9.8 },
+    //     { trimestre: "T2", moyenne: 10.5 },
+    //     { trimestre: "T3", moyenne: 11.2 },
+    // ]
+
+    useEffect(()=>{
+        const fetchApi = async ()=> {
+            try {
+                const [moyenneEvolution, moyenneClasses, moyenneMatieres, repartition ] = Promise.all(
+                    [
+                        etablissementService.moyenneEvolution(),
+                        etablissementService.moyenneClasses(),
+                        etablissementService.moyenneMatieres(),
+                        noteService.noteRepartition()
+                    ]
+                )
+                const resultat = [
+                    {title:"courbeData", value:moyenneEvolution},
+                    {title:"moyenneClasse", value:moyenneClasses},
+                    {title:"moyenneMatieres", value:moyenneMatieres},
+                    {title:"repartition", value:repartition}
+                ]
+
+                setData(resultat)
+            }catch(err){
+                console.log(err)
+            }
+        }
+
+        fetchApi()
+    },[])
     const activePage = "dashboard"
     return (
         <div className="min-h-screen bg-slate-50 flex">
@@ -154,8 +190,9 @@ import ElevesFaibles from "../components/Admin/elevesFaibles";
             {/* <Topbar page={activePage} setOpen={setSidebarOpen} /> */}
             <main className="flex-1 p-6 md:p-8 max-w-7xl w-full mx-auto animate-fadeIn" key={activePage}>
                 <DashboardPage />
-                <ElevesForts/>
-                <ElevesFaibles/>
+                {/* <ElevesForts/>
+                <ElevesFaibles/> */}
+                <MoyenneEvolutionChart data={data}/>
             </main>
         </div>
         </div>

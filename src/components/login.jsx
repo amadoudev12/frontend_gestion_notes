@@ -16,8 +16,9 @@ export default function LoginComponent() {
             return
         }
         try{
-            const res = await userService.loginUser({login, mot_passe})
-            if(res.data){
+            const res = await userService.loginUser({login:login, mot_passe:mot_passe})
+            console.log(mot_passe)
+            if(res.data.token){
                 //sauvegarde dans le localStorage
                 localStorage.setItem('token',res.data.token)
                 const token = jwtDecode(res.data.token)

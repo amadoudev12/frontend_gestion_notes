@@ -301,7 +301,13 @@ export default function StudentTable() {
 
     const typeLabel = TYPE_OPTIONS.find((t) => t.value === config.type)?.label ?? "";
     const trimestreLabel = TRIMESTRE_OPTIONS.find((t) => t.value === config.trimestre)?.label ?? "";
-
+    if(!eleves.length){
+        return (
+            <div className="flex items-center justify-center">
+                auncun eleve inscris dans cette classe
+            </div>
+        )
+    }
     return (
         <>
             <div className="st-root">
