@@ -21,12 +21,14 @@ const TopClasse = lazy(()=> import('../pages/MeilleurEleves.jsx'))
 const Matieres = lazy(()=> import('../pages/MatieresClasses.jsx'))
 const Affectation = lazy(()=> import('../pages/Affectations.jsx'))
 const Import = lazy(()=> import ('../pages/Import.jsx'))
+const Register = lazy(()=> import('../pages/Register.jsx'))
 export default function Approutes() {
 return (
     <Suspense fallback={<PageLoader message={"chargement"}/>}>
         <Routes>
             <Route path='/login' element={<LoginPage/>} />
             <Route path='/' element={<Home/>}/>
+            <Route path='/register' element={<Register/>}/>
             <Route element={<PrivateRoute/>}>
                 <Route element={<DashLayout/>}>
                     <Route path='/dashboard/enseignant' element={<DashboardEnseignant/>}/>
