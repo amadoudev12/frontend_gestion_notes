@@ -1,6 +1,6 @@
 import { Calendar, Plus, Check,Trash2, BookOpen} from "lucide-react";
 import { use, useEffect, useState } from "react";
-import { cls } from "./Admin";
+import { cls } from "../utils/cls";
 import trimestreService from "../../services/trimestreService";
 function TrimestresPage() {
     const [trimestre, setTrimestres] = useState([])
