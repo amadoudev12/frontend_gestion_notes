@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import adminService from '../../services/adminService';
 
 // ── Icons ────────────────────────────────────────────────────────
 const Icon = ({ d, size = 20, className = '' }) => (
@@ -297,7 +298,7 @@ function Step2({ data, onChange, errors }) {
 function Step3({ admin, etab }) {
   const Row = ({ label, value }) => value ? (
     <div className="flex items-start justify-between py-2.5 border-b border-gray-50 last:border-0">
-      <span className="text-sm text-gray-500 flex-shrink-0 w-40">{label}</span>
+      <span className="text-sm text-gray-500 shrink-0 w-40">{label}</span>
       <span className="text-sm font-medium text-gray-800 text-right">{value}</span>
     </div>
   ) : null;
@@ -405,7 +406,7 @@ export default function RegisterPage() {
     setLoading(true);
     setApiError(null);
     try {
-      await axios.post('/api/auth/register', {
+      await adminService.postAdmin({
         admin: {
             prenom:    adminData.prenom,
             nom:       adminData.nom,

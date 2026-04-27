@@ -41,6 +41,7 @@ function Sidebar({ open, setOpen }) {
     const [user, setUser]= useState(null)
     const logOut = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("role")
         navigate("/login");
     };
     useEffect(()=>{

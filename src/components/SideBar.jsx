@@ -34,12 +34,13 @@ function Sidebar({ open, setOpen }) {
                     const user = jwtDecode(token)
                     setProfile(user.profil)
                 }catch(err){
-                    console.log('erreur serveur')
+                    navigate('/login')
                 }
             }
     }, [])
     const logOut = ()=>{
         localStorage.removeItem("token")
+        localStorage.removeItem("role")
         navigate('/login')
     }
     return (

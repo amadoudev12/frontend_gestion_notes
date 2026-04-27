@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import StatCard from "./StatCard";
 import eleveService from "../../services/eleveService";
+import { useNavigate } from "react-router-dom";
 const getMoyenneGenerale = (matieres) => {
     if(!matieres.length){
         return 0
@@ -28,7 +29,7 @@ const getMeilleureMatiere = (matieres) => {
     return matieres.reduce((best, m) => (Number(m.moyenne) > Number(best.moyenne) ? m : best), matieres[0]);
 } 
 function StatsCards({matiereMoyenne, eleve}) {
-    
+        const navigate = useNavigate()
         const [rang, setRang]= useState(null)
         useEffect (()=>{
             const getRangFunction = async () => {
@@ -39,6 +40,7 @@ function StatsCards({matiereMoyenne, eleve}) {
                     }
                 }catch(err){
                     console.log('erreur serveur')
+                    navigate('/500')
                 }
             }
             getRangFunction()

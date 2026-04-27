@@ -49,6 +49,7 @@ export default function ListClasse() {
     const [classes, setClasses] = useState([])
     const [visible, setVisible] = useState(false)
     const [loading, setLoading] = useState(true)
+    
     useEffect(() => {
         const getClasses = async () => {
         try {

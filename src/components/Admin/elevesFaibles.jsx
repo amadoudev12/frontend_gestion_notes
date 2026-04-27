@@ -3,6 +3,8 @@ import adminService from '../../../services/adminService'
 
 export default function ElevesFaibles() {
 const [elevesFaibles, setElevesFaibles] =  useState([])
+const [erreur, setErreur] = useState(null)
+const [loading, setLoading] = useState(true)
 useEffect(()=>{
     const getElevesFaibles = async ()=>{
         try{
@@ -11,7 +13,10 @@ useEffect(()=>{
                 setElevesFaibles(res.data.moyennesEleves)
             }
         }catch(err){
+            setErreur(err?.message || "erreur serveur")
             console.log('erreur serveur')
+        }finally{
+            setLoading(false)
         }
     }
     getElevesFaibles()
@@ -29,9 +34,17 @@ useEffect(()=>{
                 {elevesFaibles.length} élève(s)
             </span>
             </div>
-
+            {erreur && (
+                <div className="mb-4 p-3 rounded-lg bg-red-50 text-red-700 border border-red-200 text-sm">
+                    {erreur}
+                </div>
+            )}
             {/* Tableau */}
-            {elevesFaibles.length === 0 ? (
+            {loading ? (
+                <div className="py-10 text-center text-sm text-gray-400">
+                    Chargement...
+                </div>
+            ) : elevesFaibles.length === 0 ? (
             <div className="py-10 text-center text-sm text-gray-400">
                 Aucun élève
             </div>
@@ -70,7 +83,7 @@ useEffect(()=>{
                             {eleve.classe}
                         </td>
                         <td className="px-5 py-3 font-semibold text-red-600">
-                            {eleve.moyenne.toFixed(2)} / 20
+                            {eleve.moyenne? eleve.moyenne.toFixed(2) : "00"} / 20
                         </td>
                     </tr>
                     ))}

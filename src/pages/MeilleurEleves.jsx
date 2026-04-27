@@ -103,6 +103,13 @@ export default function TopElevesDashboard() {
         } 
         getData()
     },[])
+    if(data.length == 0){
+        return (
+            <div>
+                aucune classe enregistrer
+            </div>
+        )
+    }
     return (
         <div className="ml-45">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">

@@ -3,6 +3,7 @@ import classeService from "../../services/classeService"
 import bulletinService from "../../services/bulletinService"
 
 import noteService from "../../services/noteService"
+import { useNavigate } from "react-router-dom"
 
 function BulletinAdmin() {
   const [classes, setClasses] = useState([])
@@ -12,7 +13,7 @@ function BulletinAdmin() {
   const [openFiche, setOpenFiche] = useState(null)           // classeId dont le panel est ouvert
   const [matieres, setMatieres] = useState({})               // { [classeId]: [] }
   const [loadingMatieres, setLoadingMatieres] = useState({}) // { [classeId]: bool }
-
+  const navigate = useNavigate()
 useEffect(() => {
         const fetchClasses = async () => {
         try {
@@ -46,6 +47,7 @@ const toggleFichePanel = async (classe) => {
             setLoadingMatieres(prev => ({ ...prev, [classe.id]: false }))
         }
     }
+}
 
   /* ── Télécharger bulletins ── */
 const downloadBulletin = async (classe) => {
@@ -54,6 +56,7 @@ const downloadBulletin = async (classe) => {
             const res = await bulletinService.getBulletinsByClasse(classe.id)
             triggerDownload(res.data, `bulletins_${classe.libelle}.pdf`)
         } catch (err) {
+            
             console.log('erreur serveur')
         } finally {
             setDownloading(null)
@@ -101,6 +104,13 @@ const isLoadingBtn = (classeId, type, matiereId) =>
     downloading?.type === type &&
     (matiereId === undefined || downloading?.matiereId === matiereId)
 
+    if(classes.length == 0){
+        return (
+            <div>
+                aucune classe n'a été enregistrer veuillez configuer votre etablissement
+            </div>
+        )
+    }
     return (
     <div className="p-6 ml-45">
 
@@ -275,7 +285,7 @@ const isLoadingBtn = (classeId, type, matiereId) =>
                                 border: "0.5px solid var(--color-border-tertiary)"
                                 }}>
                                 <span style={{ fontSize: 12, color: "var(--color-text-primary)", fontWeight: 500 }}>
-                                {matiere.matiere.nom}
+                                {matiere?.matiere?.nom}
                                 </span>
                                 <button
                                 onClick={() => downloadFicheNote(classe, matiere.matiere)}
@@ -312,6 +322,6 @@ const isLoadingBtn = (classeId, type, matiereId) =>
     </div>
   )
 }
-}
+
 
 export default BulletinAdmin

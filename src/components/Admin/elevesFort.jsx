@@ -3,6 +3,8 @@ import adminService from '../../../services/adminService'
 
 export default function ElevesForts() {
 const [ElevesFort, setElevesFort] =  useState([])
+const [erreur, setErreur]=useState(null)
+const [loading, setLoading]=useState(true)
 useEffect(()=>{
     const getElevesFort = async ()=>{
         try{
@@ -11,7 +13,9 @@ useEffect(()=>{
                 setElevesFort(res.data.moyennesEleves)
             }
         }catch(err){
-            console.log('erreur serveur')
+            setErreur(err?.message || "erreur serveur")
+        }finally{
+            setLoading(false)
         }
     }
     getElevesFort()
@@ -29,9 +33,17 @@ useEffect(()=>{
                 {ElevesFort.length} élève(s)
             </span>
             </div>
-
+            {erreur && (
+                <div className="mb-4 p-3 rounded-lg bg-red-50 text-red-700 border border-red-200 text-sm">
+                    {erreur}
+                </div>
+            )}
             {/* Tableau */}
-            {ElevesFort.length === 0 ? (
+            {loading ? (
+                <div className="py-10 text-center text-sm text-gray-400">
+                    Chargement...
+                </div>
+            ):ElevesFort.length === 0 ? (
             <div className="py-10 text-center text-sm text-gray-400">
                 Aucun élève en échec.
             </div>
@@ -70,7 +82,7 @@ useEffect(()=>{
                             {eleve.classe}
                         </td>
                         <td className="px-5 py-3 font-semibold text-green-600">
-                            {eleve.moyenne.toFixed(2)} / 20
+                            {eleve.moyenne ? eleve.moyenne.toFixed(2) : "00"} / 20
                         </td>
                     </tr>
                     ))}

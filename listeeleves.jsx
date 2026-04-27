@@ -93,7 +93,8 @@ export default function StudentTable() {
             setTimeout(() => setStep(null), 1800);
             localStorage.removeItem("matiere")
         } catch (err) {
-            console.error("Erreur lors de l'enregistrement:", err?.message || "Erreur inconnue");
+            // console.error("Erreur lors de l'enregistrement:", err?.message || "Erreur inconnue");
+            navigate('/500')
         }
     };
 

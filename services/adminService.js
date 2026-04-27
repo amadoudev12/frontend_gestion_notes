@@ -4,6 +4,6 @@ const adminService = {
     faiblesMoyenne : ()=>axiosClient.get('/admin/liste-faible-moyenne'),
     fortesMoyenne : ()=>axiosClient.get('/admin/liste-forte-moyenne'),
     classeBest : ()=> axiosClient.get('/admin/cinq-meilleurByclasse'),
-    postAdmin : (data)=> axiosClient.post('admin/create', data)
+    postAdmin : (data)=> axiosClient.post('admin/register', data)
 }
 export default adminService

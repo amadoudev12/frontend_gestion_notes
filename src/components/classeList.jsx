@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import enseignantService from '../../services/enseignantService'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 function StatCard({ items}) {
     const location = useLocation()
     const path = location.pathname
@@ -24,6 +24,7 @@ function StatCard({ items}) {
     )
 }
 export default function ClasseList() {
+    const navigate = useNavigate()
     const  [classes, setClasse]=useState(null)
     useEffect(()=>{
         const getClasses = async ()=>{
@@ -34,6 +35,7 @@ export default function ClasseList() {
                 }
             }catch(err){
                 console.log('erreur serveur')
+                navigate('/500')
             }
         }
         getClasses()

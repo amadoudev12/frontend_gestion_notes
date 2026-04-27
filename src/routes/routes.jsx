@@ -11,7 +11,7 @@ const DashLayout = lazy(()=>import('../layouts/dashLayout.jsx'))
 const Classes = lazy(()=>import('../pages/Classes.jsx'))
 const Home = lazy(()=> import('../pages/home.jsx'))
 const EleveDashboard = lazy(()=>import('../pages/eleve-dashboard.jsx'))
-const AdminDashboard = lazy(()=> import('../pages/Admin2.jsx'))
+const AdminDashboard = lazy(()=> import('../pages/Admin.jsx'))
 const AdminSideBar = lazy(()=> import('../layouts/AdminLayout.jsx'))
 const Trimestre = lazy(()=> import('../pages/Trimestre.jsx'))
 const Absence = lazy(()=> import('../pages/Absence.jsx'))
@@ -22,6 +22,7 @@ const Matieres = lazy(()=> import('../pages/MatieresClasses.jsx'))
 const Affectation = lazy(()=> import('../pages/Affectations.jsx'))
 const Import = lazy(()=> import ('../pages/Import.jsx'))
 const Register = lazy(()=> import('../pages/Register.jsx'))
+const Error500  = lazy(()=> import('../pages/Erreur500.jsx'))
 export default function Approutes() {
 return (
     <Suspense fallback={<PageLoader message={"chargement"}/>}>
@@ -29,6 +30,7 @@ return (
             <Route path='/login' element={<LoginPage/>} />
             <Route path='/' element={<Home/>}/>
             <Route path='/register' element={<Register/>}/>
+            <Route path="/500" element={<Error500 />} />
             <Route element={<PrivateRoute/>}>
                 <Route element={<DashLayout/>}>
                     <Route path='/dashboard/enseignant' element={<DashboardEnseignant/>}/>

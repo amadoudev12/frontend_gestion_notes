@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom"
 import eleveService from "../../services/eleveService"
 
 function HeaderEleve({ eleve, onLogout }) {
+    const navigate = useNavigate()
     const logOut = () => {
         localStorage.removeItem('token')
         onLogout()
@@ -27,6 +29,7 @@ function HeaderEleve({ eleve, onLogout }) {
             window.URL.revokeObjectURL(url)
         } catch (err) {
             console.log('erreur serveur')
+            navigate('/500')
         }
     }
 
