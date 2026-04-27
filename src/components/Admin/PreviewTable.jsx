@@ -1,3 +1,4 @@
+import MODES from "../../utils/Mode";
 function PreviewTable({ data, mode }) {
   const cfg = MODES[mode];
   if (!data?.length) return null;
