@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
 export default function login() {
-      const navigate = useNavigate();
+    const navigate = useNavigate();
     useEffect(()=>{
         const token = localStorage.getItem('token')
         if(token){

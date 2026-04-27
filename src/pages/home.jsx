@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { jwtDecode } from 'jwt-decode';
 // ── Icons ────────────────────────────────────────────────────────
 const Icon = ({ d, size = 24, className = '' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
@@ -557,9 +557,24 @@ function Footer() {
     </footer>
   );
 }
-
 // ── Main export ──────────────────────────────────────────────────
 export default function LandingPage() {
+  const navigate = useNavigate();
+      useEffect(()=>{
+          const token = localStorage.getItem('token')
+          if(token){
+              const decodedToken = jwtDecode(token)
+              if(decodedToken.user.role === "ENSEIGNANT"){
+                  navigate('/dashboard/enseignant')
+              }else if (decodedToken.user.role === "ELEVE"){
+                  navigate('/dashboard/eleve')
+              }else{
+                navigate('/dashboard/admin')
+              }
+          }else{
+              return
+          }
+      },[])
   return (
     <div className="font-sans antialiased">
       <Navbar />
