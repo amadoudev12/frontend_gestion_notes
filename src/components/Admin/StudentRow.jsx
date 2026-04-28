@@ -1,3 +1,4 @@
+import { cls } from "../../utils/cls";
 function StudentRow({ rank, nom, moyenne, classe, isTop }) {
     const pct = (moyenne / 20) * 100;
     const scoreColor = isTop ? "text-emerald-600" : "text-rose-500";

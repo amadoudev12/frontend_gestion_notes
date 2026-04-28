@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 function AnimatedNumber({ value, decimals = 0 }) {
     const [display, setDisplay] = useState(0);
     useEffect(() => {
