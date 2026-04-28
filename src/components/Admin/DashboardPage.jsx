@@ -5,6 +5,11 @@ import {
   ChevronRight, Bell, Search, GraduationCap, BookOpen,
   Star, AlertTriangle, BarChart3, PieChart,Activity
 } from "lucide-react";
+import StatCard from "./StatCard";
+import LineSparkChart from "./miniLineChart";
+import BarChart from "./BarChart";
+import DonutChart from "./DonutChart";
+import StudentRow from "./StudentRow";
 function DashboardPage({ stat, chartData, loading }) {
     const moyVal = stat?.moyenneEtablissement?.moyenneEtablissement;
     const moyColor = (moyVal ?? 0) >= 10 ? "success" : "danger";

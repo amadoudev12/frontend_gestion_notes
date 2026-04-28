@@ -66,48 +66,6 @@ export function SectionTitle({ icon: Icon, title, subtitle }) {
         </div>
     );
 }
-    // ─── ANIMATED NUMBER ─────────────────────────────────────────────────────────
-import AnimatedNumber from "../components/Admin/AnimatedNumber";
-
-    // ─── STAT CARD ───────────────────────────────────────────────────────────────
-import StatCard from "../components/Admin/StatCard";
-
-    // ─── MINI CHART — LINE (SVG, no lib) ─────────────────────────────────────────
-import LineSparkChart from "../components/Admin/miniLineChart";
-
-    // ─── BAR CHART (SVG, no lib) ──────────────────────────────────────────────────
-import BarChart from "../components/Admin/BarChart";
-    // ─── DONUT CHART (SVG) ────────────────────────────────────────────────────────
-import DonutChart from "../components/Admin/DonutChart";
-
-    // ─── STUDENT ROW ─────────────────────────────────────────────────────────────
-import StudentRow from "../components/Admin/StudentRow";
-    // TOPBAR 
-    // function Topbar({ setOpen }) {
-    // return (
-    //     <header className="bg-white border-b border-slate-100 px-6 py-3.5 flex items-center gap-4 top-0 z-10">
-    //     {/* <button className="lg:hidden text-slate-500 hover:text-slate-800 transition" onClick={() => setOpen(o => !o)}>
-    //         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    //     </button> */}
-    //     <div className="flex items-center gap-2 text-slate-400 text-sm">
-    //         <span className="font-semibold text-slate-700">EduAdmin</span>
-    //         <ChevronRight size={14} />
-    //         <span className="text-slate-500">Tableau de bord</span>
-    //     </div>
-    //     <div className="ml-auto flex items-center gap-3">
-    //         <div className="relative hidden md:block">
-    //         <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-    //         <input type="text" placeholder="Rechercher..." className="bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 w-52 transition" />
-    //         </div>
-    //         <button className="relative p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition">
-    //         <Bell size={19} />
-    //         <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full" />
-    //         </button>
-    //     </div>
-    //     </header>
-    // );
-    // }
-
     // ─── DASHBOARD PAGE ───────────────────────────────────────────────────────────
 import DashboardPage from "../components/Admin/DashboardPage";
     // ─── APP

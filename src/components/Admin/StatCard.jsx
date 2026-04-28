@@ -5,7 +5,7 @@ const CARD_THEMES = {
     success: { bg: "from-green-500 to-green-700",     icon: "bg-green-400/30"   },
     danger:  { bg: "from-red-500 to-red-700",         icon: "bg-red-400/30"     },
 };
-
+import AnimatedNumber from "./AnimatedNumber";
 function StatCard({ title, value, subtitle, icon: Icon, color = "blue", delay = 0, decimals = 0 }) {
     const [visible, setVisible] = useState(false);
     useEffect(() => {

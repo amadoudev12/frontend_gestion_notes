@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 function DropZone({ file, onFile, error, accent, accentLight, accentBorder }) {
   const [drag, setDrag] = useState(false);
   const ref = useRef();
