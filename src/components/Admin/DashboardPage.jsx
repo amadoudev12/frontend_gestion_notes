@@ -13,7 +13,7 @@ import StudentRow from "./StudentRow";
 function DashboardPage({ stat, chartData, loading }) {
     const moyVal = stat?.moyenneEtablissement?.moyenneEtablissement;
     const moyColor = (moyVal ?? 0) >= 10 ? "success" : "danger";
-
+    console.log(moyVal)
     return (
         <div className="space-y-8">
 
