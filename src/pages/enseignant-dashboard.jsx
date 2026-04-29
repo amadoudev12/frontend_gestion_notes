@@ -6,7 +6,7 @@ import {
 import ROW_COLORS from "../utils/RowColors";
 import { jwtDecode } from "jwt-decode";
 import enseignantService from "../../services/enseignantService";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import FicheNotesModal from "../components/FicheNotes";
 import ClassePanel from "../components/ClassePannel";
 // ─── Stat Card ────────────────────────────────────────────────────────────────
@@ -112,6 +112,11 @@ function DashboardContent({ user }) {
   const [matieres, setMatieres]           = useState([])
   const [showFicheModal, setShowFicheModal] = useState(false)
   const [showNotesPanel, setShowNotesPanel] = useState(false)
+  const navigate = useNavigate()
+  const logOut = ()=>{
+    localStorage.clear()
+    navigate('/')
+  }
   useEffect(() => {
     const fetchAll = async () => {
       try {
@@ -200,9 +205,11 @@ function DashboardContent({ user }) {
           <span className="text-xs text-slate-500 bg-white border border-slate-100 px-3 py-1.5 rounded-full">
             2ème Trimestre · 2024–2025
           </span>
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 text-green-700 rounded-full text-xs font-medium border border-green-100">
-            <CheckCircle2 size={13} /> En ligne
-          </div>
+          <button onClick={logOut}>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-red-50 text-red-700 rounded-full text-xs font-medium border border-red-100">
+              <CheckCircle2 size={13} /> Se deconnecter
+            </div>
+          </button>
         </div>
       </div>
 
