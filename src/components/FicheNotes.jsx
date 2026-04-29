@@ -113,7 +113,7 @@ function FicheNotesModal({ matieres, onClose }) {
         <div className="px-5 py-4 border-t border-slate-100 flex items-center justify-between gap-3">
           <p className="text-xs text-slate-400 truncate">
             {selected
-              ? `"${selected.matiere}" · ${selected.classe?.libelle}`
+              ? `"${selected.matiere.nom}" · ${selected.classe?.libelle}`
               : "Aucune matière sélectionnée"
             }
           </p>
