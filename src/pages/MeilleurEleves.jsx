@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import adminService from "../../services/adminService";
-
+import PageLoader from "../components/LoaderPage";
 const MEDALS = ["🥇", "🥈", "🥉"];
 
 function StudentRow({ eleve, rank, isTop1 }) {
@@ -106,7 +106,7 @@ export default function TopElevesDashboard() {
     if(data.length == 0){
         return (
             <div>
-                aucune classe enregistrer
+                <PageLoader/>
             </div>
         )
     }
