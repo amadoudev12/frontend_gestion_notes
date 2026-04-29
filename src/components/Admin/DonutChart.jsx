@@ -1,4 +1,4 @@
-function DonutChart({ data }) {
+function DonutChart({ data, count }) {
     if (!data?.length) return null;
     const COLORS = ["#f87171", "#fbbf24", "#60a5fa", "#34d399"];
     const total = data.reduce((s, d) => s + (d.count || 0), 0);
@@ -30,7 +30,7 @@ function DonutChart({ data }) {
         <div className="flex items-center gap-4 flex-wrap">
         <svg viewBox="0 0 160 160" style={{ width: 140, height: 140, flexShrink: 0 }}>
             {slices.map((s, i) => <path key={i} d={s.path} fill={s.color} />)}
-            <text x={CX} y={CY - 4} textAnchor="middle" fontSize="12" fontWeight="700" fill="#1e293b">{total}</text>
+            <text x={CX} y={CY - 4} textAnchor="middle" fontSize="12" fontWeight="700" fill="#1e293b">{count}</text>
             <text x={CX} y={CY + 10} textAnchor="middle" fontSize="8" fill="#64748b">élèves</text>
         </svg>
         <div className="flex flex-col gap-2">

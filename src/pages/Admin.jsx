@@ -92,12 +92,12 @@ export default function App() {
                 adminService.faiblesMoyenne()
             ]);
             setChartData({
-            courbeData:     moyenneEvolution?.data,
-            moyenneClasses: moyenneClasses?.data,
-            moyenneMatieres: moyenneMatieres?.data,
-            repartition:    repartition?.data,
-            elevesForts:    elevesForts?.data ,   // remplace par ton service si disponible
-            elevesFaibles:  elevesFaibles?.data // idem
+                courbeData:     moyenneEvolution?.data,
+                moyenneClasses: moyenneClasses?.data,
+                moyenneMatieres: moyenneMatieres?.data,
+                repartition:    repartition?.data,
+                elevesForts:    elevesForts?.data ,   // remplace par ton service si disponible
+                elevesFaibles:  elevesFaibles?.data // idem
             });
         } catch (err) {
             console.log('erreur serveur')
